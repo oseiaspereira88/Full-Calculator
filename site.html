@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8">
+      <title> Full Calculator </title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+      <link rel="icon" href="/imgs/favicon.ico" type="image/x-icon">
+
+      <style>
+         *{
+            margin: 0 !important;
+         }
+      </style>
+   </head>
+   <body>
+   <main style="height: 100vh;">
+
+      <div class="row align-items-start">
+         <div class="col-3" style="padding: 0 !important;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="height: 100vh;">
+               <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                  <span class="fs-4">Calculadora</span>
+               </a>
+               <hr>
+               <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                     <a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                        Estatística
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Financeira
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        Tabelas
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Calculo
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="nav-link link-dark">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Perfil
+                     </a>
+                  </li>
+               </ul>
+               <hr>
+               <div class="dropdown">
+                  <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                     <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                     <strong>mdo</strong>
+                  </a>
+                  <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="">
+                     <li><a class="dropdown-item" href="#">New project...</a></li>
+                     <li><a class="dropdown-item" href="#">Settings</a></li>
+                     <li><a class="dropdown-item" href="#">Profile</a></li>
+                     <li><hr class="dropdown-divider"></li>
+                     <li><a class="dropdown-item" href="#">Sign out</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="col-9" style="padding: 0 !important;">
+
+            <nav class="navbar navbar-dark" style="width: 100% !important; background-color: rgba(235,238,253,1);">
+               <div class="container-fluid">
+                  <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                     <input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off" checked onclick="setCalcType(0)">
+                     <label class="btn btn-outline-primary" for="btnradio0">Média</label>
+
+                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="setCalcType(1)">
+                     <label class="btn btn-outline-primary" for="btnradio1">Desvio Médio</label>
+
+                     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="setCalcType(2)">
+                     <label class="btn btn-outline-primary" for="btnradio2">Cálculo de Variância</label>
+
+                     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="setCalcType(3)">
+                     <label class="btn btn-outline-primary" for="btnradio3">Desvio Padrão</label>
+
+                     <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" onclick="setCalcType(4)">
+                     <label class="btn btn-outline-primary" for="btnradio4">Coeficiente de Variação</label>
+
+                     <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" onclick="setCalcType(5)">
+                     <label class="btn btn-outline-primary" for="btnradio5">Amplitude Total</label>
+                  </div>
+               </div>
+            </nav>
+
+            <div class="row align-items-start p-5">
+               <div class=" p-4" style="width: 100%; height: 76vh;">
+
+                  <div class="row align-items-start">
+                     <div class="col-4" style="padding: 0 !important; padding-right: 16px !important;">
+                        <label class="form-label p-1 btn" style="width: 100%; background-color: rgba(152,160,246,0.38); text-align: center;">
+                           Valor
+                        </label><br><br>
+                     </div>
+                     <div class="col-4" style="padding: 0 !important; padding-right: 16px !important;">
+                        <label class="form-label p-1 btn" style="width: 100%; background-color: rgba(152,160,246,0.38); text-align: center;">
+                           Repetições
+                        </label><br><br>
+                     </div>
+                  </div>
+
+                  <div id="rows">
+                     <div class="row align-items-start">
+                        <div class="col-4" style="padding: 0 !important; padding-right: 16px !important;"><br>
+                           <input type="number" class="form-control coluna-A" placeholder="-">
+                        </div>
+                        <div class="col-4" style="padding: 0 !important; padding-right: 16px !important;"><br>
+                           <input type="number" class="form-control coluna-B" placeholder="-">
+                        </div>
+                     </div>
+                     <div class="row align-items-start">
+                        <div class="col-4" style="padding: 0 !important; padding-right: 16px !important;"><br>
+                           <input type="number" class="form-control coluna-A" placeholder="-">
+                        </div>
+                        <div class="col-4" style="padding: 0 !important; padding-right: 16px !important;"><br>
+                           <input type="number" class="form-control coluna-B" placeholder="-">
+                        </div>
+                     </div>
+                  </div>
+
+                  <br>
+
+                  <div class="row align-items-start">
+                     <div class="col-3" style="padding: 0 !important; padding-right: 16px !important;"></div>
+
+                     <div class="col-2" style="padding: 0 !important; padding-right: 16px !important; text-align: center;">
+                        <label onclick="addRow()" class="form-label p-1 btn" 
+                           style="width: 40px; height: 40px; font-size: 16pt; border-radius: 100%; background-color: rgba(47, 113, 255, 0.38);">
+                           +
+                        </label>
+                     </div>
+                     
+                     <div class="col-2" style="padding: 0 !important; padding-right: 16px !important;"></div>
+                  </div>
+
+                  <br>
+
+                  <!-- Divs de exibições e botões -->
+                  <div class="row align-items-start">
+
+                     <div class="col-2" style="padding: 0 !important; padding-right: 16px !important;">
+                        <label class="form-label p-1 btn" style="width: 100%; background-color: rgba(152,160,246,0.38);">Sequencia:</label>
+
+                        <label id="resultTitle" class="form-label p-1 btn mt-3" style="width: 100%; background-color: rgba(152,160,246,0.38);">Resultado:</label>
+                     </div>
+
+                     <div class="col-6" style="padding: 0 !important; padding-right: 16px !important;">
+                        <label id="resultSequencia" class="form-label p-1 btn" style="width: 100%; background-color: rgba(152,160,246,0.38);">
+                           {}
+                        </label>
+                        <label id="resultArea" class="form-label p-1 mt-3 btn" style="width: 100%; background-color: rgba(152,160,246,0.38);">
+                           Nenhum resultado
+                        </label>
+                     </div>
+                     <div class="col-4"></div>
+
+                     <div class="col-8" style="padding: 0 !important; padding-right: 16px !important;"><br>
+                        <div class="btn btn-primary" onclick="calcular()" style="width: 100%;"> Calcular </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+         </div>
+      </div>
+      
+   </main>
+
+   <script src="js/Calculator.js"></script>
+   <script src="js/RowController.js"></script>
+
+   </body>
+</html>
